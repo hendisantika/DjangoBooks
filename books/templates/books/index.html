@@ -35,12 +35,10 @@
                     <td>{{ book.publisher }}</td>
                     <td>{{ book.publish_date }}</td>
                     <td>
-                        <center>
-                            <a class="btn btn-sm btn-warning" href="edit/{{ book.id }}"><span
-                                    class="glyphicon glyphicon-edit"></span> Edit</a>
-                            <a class="btn btn-sm btn-danger" href="delete/{{ book.id }}"><span
-                                    class="glyphicon glyphicon-trash"></span> Delete</a>
-                        </center>
+                        <a class="btn btn-sm btn-warning" href="edit/{{ book.id }}"><span
+                                class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a class="btn btn-sm btn-danger" href="delete/{{ book.id }}"><span
+                                class="glyphicon glyphicon-trash"></span> Delete</a>
                     </td>
                 </tr>
             {% endfor %}
