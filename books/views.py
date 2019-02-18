@@ -26,14 +26,14 @@ def add_book(request):
 
 def edit(request, id):
     # members = Member.objects.get(id=id)
-    members = get_object_or_404(Member, pk=id)
+    members = get_object_or_404(Books, pk=id)
     context = {'members': members}
     return render(request, 'books/edit.html', context)
 
 
 def update(request, id):
     # member = Member.objects.get(id=id)
-    member = get_object_or_404(Member, pk=id)
+    member = get_object_or_404(Books, pk=id)
     member.firstname = request.POST['firstname']
     member.lastname = request.POST['lastname']
     member.save()
@@ -42,6 +42,6 @@ def update(request, id):
 
 def delete(request, id):
     # member = Member.objects.get(id=id)
-    member = get_object_or_404(Member, pk=id)
+    member = get_object_or_404(Books, pk=id)
     member.delete()
     return redirect('/books/')
