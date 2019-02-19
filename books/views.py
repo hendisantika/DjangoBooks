@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Member, Books
+from .models import Books
 
 
 def index(request):
@@ -19,24 +19,28 @@ def create(request):
 
 
 def add_book(request):
-    members = Member.objects.all()
-    context = {'members': members}
+    # members = Member.objects.all()
+    books = Books.objects.all()
+    context = {'books': books}
     return render(request, 'books/add_book.html', {})
 
 
 def edit(request, id):
     # members = Member.objects.get(id=id)
-    members = get_object_or_404(Books, pk=id)
-    context = {'members': members}
+    books = get_object_or_404(Books, pk=id)
+    context = {'books': books}
     return render(request, 'books/edit.html', context)
 
 
 def update(request, id):
     # member = Member.objects.get(id=id)
-    member = get_object_or_404(Books, pk=id)
-    member.firstname = request.POST['firstname']
-    member.lastname = request.POST['lastname']
-    member.save()
+    books = get_object_or_404(Books, pk=id)
+    books.book_title = request.POST['book_title']
+    books.writer = request.POST['writer']
+    books.synopsis = request.POST['synopsis']
+    books.publisher = request.POST['publisher']
+    books.publish_date = request.POST['publish_date']
+    books.save()
     return redirect('/books/')
 
 
